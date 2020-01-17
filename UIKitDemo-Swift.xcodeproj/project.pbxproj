@@ -13,7 +13,6 @@
 		BA4DAD1223D1843B0081EACC /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4DAD1123D1843B0081EACC /* MainController.swift */; };
 		BA75E3C923ACCF6A00713177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA75E3C823ACCF6A00713177 /* AppDelegate.swift */; };
 		BA75E3CB23ACCF6A00713177 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA75E3CA23ACCF6A00713177 /* SceneDelegate.swift */; };
-		BA75E3CD23ACCF6A00713177 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA75E3CC23ACCF6A00713177 /* ViewController.swift */; };
 		BA75E3D023ACCF6A00713177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA75E3CE23ACCF6A00713177 /* Main.storyboard */; };
 		BA75E3D223ACCF6B00713177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA75E3D123ACCF6B00713177 /* Assets.xcassets */; };
 		BA75E3D523ACCF6B00713177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA75E3D323ACCF6B00713177 /* LaunchScreen.storyboard */; };
@@ -47,7 +46,6 @@
 		BA75E3C523ACCF6A00713177 /* UIKitDemo-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIKitDemo-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA75E3C823ACCF6A00713177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA75E3CA23ACCF6A00713177 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BA75E3CC23ACCF6A00713177 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BA75E3CF23ACCF6A00713177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA75E3D123ACCF6B00713177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA75E3D423ACCF6B00713177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -131,12 +129,11 @@
 				BA75E3F823ACD5E800713177 /* Cells */,
 				BA75E3C823ACCF6A00713177 /* AppDelegate.swift */,
 				BA75E3CA23ACCF6A00713177 /* SceneDelegate.swift */,
-				BA75E3CC23ACCF6A00713177 /* ViewController.swift */,
 				BA75E3CE23ACCF6A00713177 /* Main.storyboard */,
+				BA4DAD1123D1843B0081EACC /* MainController.swift */,
 				BA75E3D123ACCF6B00713177 /* Assets.xcassets */,
 				BA75E3D323ACCF6B00713177 /* LaunchScreen.storyboard */,
 				BA75E3D623ACCF6B00713177 /* Info.plist */,
-				BA4DAD1123D1843B0081EACC /* MainController.swift */,
 			);
 			path = "UIKitDemo-Swift";
 			sourceTree = "<group>";
@@ -301,7 +298,6 @@
 				BA4DAD1223D1843B0081EACC /* MainController.swift in Sources */,
 				BA4DAD0E23D15F3C0081EACC /* ViewsController.swift in Sources */,
 				BA75E3FA23ACD60000713177 /* CompCell.swift in Sources */,
-				BA75E3CD23ACCF6A00713177 /* ViewController.swift in Sources */,
 				BA75E3C923ACCF6A00713177 /* AppDelegate.swift in Sources */,
 				BA4DAD1023D160730081EACC /* LayoutController.swift in Sources */,
 				BA75E3CB23ACCF6A00713177 /* SceneDelegate.swift in Sources */,

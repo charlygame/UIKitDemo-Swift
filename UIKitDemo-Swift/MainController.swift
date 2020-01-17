@@ -30,7 +30,7 @@ class MainController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("select index: \(indexPath.row)");
+        
         let cls: UIViewController.Type = menuList[indexPath.row].cls as! UIViewController.Type
         let controller = cls.init()
         self.navigationController?.pushViewController(controller, animated: true)

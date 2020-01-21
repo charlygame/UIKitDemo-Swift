@@ -75,10 +75,23 @@ class ViewsControler : UIViewController {
         print(p2) // 50, 50
         
         // transform
-        bv1.transform = CGAffineTransform(rotationAngle: 45 * .pi / 180)
+        //bv1.transform = CGAffineTransform(rotationAngle: 45 * .pi / 180)
 //        btn.titleLabel?.text = "旋转"
 //        btn.frame = CGRect(x:100, y:440, width:50, height:20)
 //        self.view.addSubview(btn)
+//        bv1.transform = CGAffineTransform(scaleX: 1.8, y: 1.0)
+//        bv1.transform = CGAffineTransform(translationX:  100, y: 0).rotated(by: 45 * .pi / 180)
+//        bv1.transform = CGAffineTransform(rotationAngle: 45 * .pi / 180).translatedBy(x: 100, y: 0)
+        
+        // 连接两次变化
+        let r = CGAffineTransform(rotationAngle: 45 * .pi / 180)
+        let t = CGAffineTransform(translationX: 100, y: 0)
+        // 先移动 再 旋转
+        bv2.transform = r.concatenating(t)
+        // 选旋转 再 移动
+//        bv2.transform = t.concatenating(r)
+        // 移除旋转的变化
+        bv2.transform = r.inverted().concatenating(bv2.transform)
         
     }
     override func viewWillAppear(_ animated: Bool) {

@@ -148,6 +148,21 @@ class LayoutController : UIViewController {
         self.constraintsWithout.append(contentsOf: c2Without)
         NSLayoutConstraint.activate(self.constraintsWith)
         
+        // 测试safeAreaLayoutGuide
+        
+        let vc1 = UIView()
+        vc1.backgroundColor = .brown
+        vc1.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        self.view.addSubview(vc1)
+        vc1.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            vc1.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            vc1.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor)
+        ])
+        
+       
+        
     }
     
     func createSwitchButton() -> Void {

@@ -148,23 +148,164 @@ class LayoutController : UIViewController {
         self.constraintsWithout.append(contentsOf: c2Without)
         NSLayoutConstraint.activate(self.constraintsWith)
         
-        // 测试safeAreaLayoutGuide
-        
+        // 测试safeAreaLayoutGuide 自动调整显示safeArea里
         let vc1 = UIView()
         vc1.backgroundColor = .brown
-        vc1.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+//        vc1.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         self.view.addSubview(vc1)
         vc1.translatesAutoresizingMaskIntoConstraints = false
+        // 调整safearea的范围大小
+        self.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+        // 设置view 自身的margin  layoutMargins 值 能够继承给子节点
+        vc1.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10)
+        // 测试LayoutMargin 对子节点的影响
+//        let vc3 = UIView()
+//        vc3.backgroundColor = .link
+//        vc3.translatesAutoresizingMaskIntoConstraints = false
+//        vc1.addSubview(vc3)
+//        vc3.preservesSuperviewLayoutMargins = false
+//        NSLayoutConstraint.activate([
+//            vc3.widthAnchor.constraint(equalToConstant: 60),
+//            vc3.heightAnchor.constraint(equalToConstant: 60),
+//            vc3.trailingAnchor.constraint(equalTo: vc1.layoutMarginsGuide.trailingAnchor),
+//            vc3.leadingAnchor.constraint(equalTo: vc1.layoutMarginsGuide.leadingAnchor)
+//        ])
+//
+//        NSLayoutConstraint.activate([
+//            vc1.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+//            vc1.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+//            vc1.widthAnchor.constraint(equalToConstant: 100),
+//            vc1.heightAnchor.constraint(equalToConstant: 100)
+//        ])
+        
+//        let vc2 = UIView()
+//        vc2.backgroundColor = .blue
+//        self.view.addSubview(vc2)
+//        vc2.translatesAutoresizingMaskIntoConstraints = false
+////        vc2.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+//        NSLayoutConstraint.activate([
+//            vc2.leadingAnchor.constraint(equalTo: vc1.layoutMarginsGuide.trailingAnchor),
+//            vc2.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+//            vc2.widthAnchor.constraint(equalToConstant: 100),
+//            vc2.heightAnchor.constraint(equalToConstant: 100)
+//        ])
+        // 自定义LayoutGuide
+        
+        let svg = UIView()
+        svg.backgroundColor = .white
+        svg.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(svg)
         
         NSLayoutConstraint.activate([
-            vc1.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            vc1.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor)
+            svg.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -200),
+            svg.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            svg.widthAnchor.constraint(equalToConstant: 200),
+            svg.heightAnchor.constraint(equalToConstant: 200)
+        ])
+        
+        let guides = [UILayoutGuide(), UILayoutGuide()]
+        let views = [ createUIView(color: .green, parent: svg),
+                      createUIView(color: .red, parent: svg),
+//                      createUIView(color: .link, parent: svg),
+                      createUIView(color: .blue, parent: svg)]
+        for guide in guides {
+            svg.addLayoutGuide(guide)
+        }
+        for view in views {
+            svg.addSubview(view)
+        }
+        // 水平等距
+        
+        NSLayoutConstraint.activate([
+            views[0].widthAnchor.constraint(equalToConstant: 200),
+            views[1].widthAnchor.constraint(equalToConstant: 200),
+            views[2].widthAnchor.constraint(equalToConstant: 200),
+
+            views[0].heightAnchor.constraint(equalToConstant: 20),
+            views[1].heightAnchor.constraint(equalToConstant: 20),
+            views[2].heightAnchor.constraint(equalToConstant: 20),
+        ])
+        
+        /*
+        NSLayoutConstraint.activate([
+            guides[0].topAnchor.constraint(equalTo: svg.topAnchor),
+            guides[1].topAnchor.constraint(equalTo: svg.topAnchor),
+
+            guides[0].heightAnchor.constraint(equalToConstant: 10),
+            guides[1].heightAnchor.constraint(equalToConstant: 10),
+            
+            views[0].leadingAnchor.constraint(equalTo: svg.leadingAnchor),
+            
+            views[0].trailingAnchor.constraint(equalTo: guides[0].leadingAnchor),
+            views[1].leadingAnchor.constraint(equalTo: guides[0].trailingAnchor),
+
+            views[1].trailingAnchor.constraint(equalTo: guides[1].leadingAnchor),
+            views[2].leadingAnchor.constraint(equalTo: guides[1].trailingAnchor),
+            views[2].trailingAnchor.constraint(equalTo: svg.trailingAnchor),
+            
+            guides[1].widthAnchor.constraint(equalTo: guides[0].widthAnchor),
+        ])
+        */
+        // 垂直等距
+        /*
+        NSLayoutConstraint.activate([
+            views[0].widthAnchor.constraint(equalToConstant: 200),
+            views[1].widthAnchor.constraint(equalToConstant: 200),
+            views[2].widthAnchor.constraint(equalToConstant: 200),
+
+            views[0].heightAnchor.constraint(equalToConstant: 20),
+            views[1].heightAnchor.constraint(equalToConstant: 20),
+            views[2].heightAnchor.constraint(equalToConstant: 20),
+        ])
+        
+
+        NSLayoutConstraint.activate([
+            guides[0].leadingAnchor.constraint(equalTo: svg.leadingAnchor),
+            guides[1].leadingAnchor.constraint(equalTo: svg.leadingAnchor),
+
+            guides[0].widthAnchor.constraint(equalToConstant: 10),
+            guides[1].widthAnchor.constraint(equalToConstant: 10),
+            
+            views[0].topAnchor.constraint(equalTo: svg.topAnchor),
+            
+            views[0].bottomAnchor.constraint(equalTo: guides[0].topAnchor),
+            views[1].topAnchor.constraint(equalTo: guides[0].bottomAnchor),
+
+            views[1].bottomAnchor.constraint(equalTo: guides[1].topAnchor),
+            views[2].topAnchor.constraint(equalTo: guides[1].bottomAnchor),
+            views[2].bottomAnchor.constraint(equalTo: svg.bottomAnchor),
+            
+            guides[1].heightAnchor.constraint(equalTo: guides[0].heightAnchor),
+        ])
+        */
+        // 使用stackView实现等距布局
+        let sv = UIStackView(arrangedSubviews: views)
+        sv.axis = .vertical
+        sv.alignment = .fill
+        sv.distribution = .equalSpacing
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(sv)
+        sv.backgroundColor = .cyan
+        NSLayoutConstraint.activate([
+            sv.topAnchor.constraint(equalTo: svg.bottomAnchor, constant: 10),
+            sv.trailingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.trailingAnchor),
+            sv.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
        
         
-    }
+        // 测试alignmentRect
+        let emijImg = CustomImageView(image: UIImage(named: "emij_happy"))
+        emijImg.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(emijImg)
+        NSLayoutConstraint.activate([
+            emijImg.bottomAnchor.constraint(equalTo: self.view.layoutMarginsGuide.bottomAnchor),
+            emijImg.leadingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leadingAnchor)
+        ])
     
+        print("\(emijImg.alignmentRectInsets)")
+    }
+
     func createSwitchButton() -> Void {
         
         let btn = UIButton(type: .system)
@@ -193,5 +334,15 @@ class LayoutController : UIViewController {
             NSLayoutConstraint.activate(self.constraintsWith)
         }
         
+    }
+    
+    func createUIView(color: UIColor, parent: UIView) -> UIView {
+        
+        let view = UIView()
+        view.backgroundColor = color
+        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.preservesSuperviewLayoutMargins = true
+        parent.addSubview(view)
+        return view
     }
 }

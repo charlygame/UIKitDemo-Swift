@@ -19,6 +19,7 @@
 		BA75E3E023ACCF6C00713177 /* UIKitDemo_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA75E3DF23ACCF6C00713177 /* UIKitDemo_SwiftTests.swift */; };
 		BA75E3EB23ACCF6C00713177 /* UIKitDemo_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA75E3EA23ACCF6C00713177 /* UIKitDemo_SwiftUITests.swift */; };
 		BA75E3FA23ACD60000713177 /* CompCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA75E3F923ACD60000713177 /* CompCell.swift */; };
+		EA37545C23DFEAC70036F2BD /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA37545B23DFEAC70036F2BD /* CustomImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		BA75E3EA23ACCF6C00713177 /* UIKitDemo_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitDemo_SwiftUITests.swift; sourceTree = "<group>"; };
 		BA75E3EC23ACCF6C00713177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA75E3F923ACD60000713177 /* CompCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompCell.swift; sourceTree = "<group>"; };
+		EA37545B23DFEAC70036F2BD /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 		BA75E3C723ACCF6A00713177 /* UIKitDemo-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				EA37545A23DFEA630036F2BD /* Extensions */,
 				BA4DAD0A23D082D10081EACC /* Controllers */,
 				BA4DAD0923D081EB0081EACC /* Modes */,
 				BA75E3F823ACD5E800713177 /* Cells */,
@@ -162,6 +165,14 @@
 				BA75E3F923ACD60000713177 /* CompCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		EA37545A23DFEA630036F2BD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EA37545B23DFEAC70036F2BD /* CustomImageView.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA4DAD1223D1843B0081EACC /* MainController.swift in Sources */,
+				EA37545C23DFEAC70036F2BD /* CustomImageView.swift in Sources */,
 				BA4DAD0E23D15F3C0081EACC /* ViewsController.swift in Sources */,
 				BA75E3FA23ACD60000713177 /* CompCell.swift in Sources */,
 				BA75E3C923ACCF6A00713177 /* AppDelegate.swift in Sources */,
